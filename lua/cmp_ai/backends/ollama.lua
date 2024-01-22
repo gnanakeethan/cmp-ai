@@ -8,7 +8,7 @@ function Ollama:new(o, params)
   self.__index = self
   self.params = vim.tbl_deep_extend('keep', params or {}, {
     base_url = 'http://127.0.0.1:11434/api/generate',
-    model = 'codellama:7b-code-fp16',
+    model = 'codellama:13b-code-fp16',
     options = {
       temperature = 0.2,
     },
