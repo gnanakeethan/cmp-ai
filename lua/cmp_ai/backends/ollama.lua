@@ -10,9 +10,7 @@ function Ollama:new(o, params)
     base_url = 'http://127.0.0.1:11434/api/generate',
     model = 'stable-code:3b-code-fp16',
     options = {
-      temperature = 0.2,
-      max_new_tokens=48,
-      do_sample=True,  
+      temperature = 0.2
     },
   })
 
