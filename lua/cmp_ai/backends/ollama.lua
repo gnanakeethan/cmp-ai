@@ -11,6 +11,7 @@ function Ollama:new(o, params)
     model = 'stable-code:3b-code-fp16',
     options = {
       temperature = 0.2,
+        
     },
   })
 
@@ -20,7 +21,9 @@ end
 function Ollama:complete(lines_before, lines_after, cb)
   local data = {
     model = self.params.model,
-    prompt = '<PRE> ' .. lines_before .. ' <SUF>' .. lines_after .. ' <MID>',
+    -- <fim_prefix>def fib(n):<fim_suffix>    else:\n        return fib(n - 2) + fib(n - 1)<fim_middle>
+    -- prompt = '<PRE> ' .. lines_before .. ' <SUF>' .. lines_after .. ' <MID>',
+    prompt = '<fim_prefix>'.. lines_before ..'<fim_suffix>'.. lines_after ..' <fim_middle>',
     stream = false,
     options = self.params.options,
   }
